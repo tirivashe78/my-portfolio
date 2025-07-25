@@ -192,8 +192,8 @@ export default function ContactPage() {
               <h2 className="text-xl font-semibold mb-2">Follow Me</h2>
               <div className="flex space-x-4">
                 {[
-                  { icon: <FaGithub size={24} />, href: "https://github.com/your-username", label: "GitHub" },
-                  { icon: <FaLinkedin size={24} />, href: "https://linkedin.com/in/your-username", label: "LinkedIn" },
+                  { icon: <FaGithub size={24} />, href: "https://github.com/tirivashe78", label: "GitHub" },
+                  { icon: <FaLinkedin size={24} />, href: "https://www.linkedin.com/in/tirivashe-tinarwo-482aba30a/", label: "LinkedIn" },
                   { icon: <FaTwitter size={24} />, href: "https://twitter.com/your-username", label: "Twitter" },
                 ].map((item) => (
                   <motion.a
