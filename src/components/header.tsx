@@ -1,28 +1,31 @@
 // src/components/header.tsx
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { motion, Variants, Transition } from "framer-motion";
+import { FaBars, FaTimes } from "react-icons/fa";
 
-// Define a properly typed spring Transition
+// spring transition for animations
 const spring: Transition = {
   type: "spring",
-  stiffness: 120,
+  stiffness: 200,
   damping: 20,
 };
 
-// Annotate your header animation variants as Variants
-const headerVariants: Variants = {
-  hidden: { y: -50, opacity: 0 },
+// variants for the mobile menu overlay
+const menuVariants: Variants = {
+  hidden: { opacity: 0, x: "100%" },
   show: {
-    y: 0,
     opacity: 1,
+    x: 0,
     transition: spring,
   },
 };
 
 export default function Header() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   const navItems = [
     { label: "Home", href: "/" },
     { label: "About", href: "/about" },
@@ -31,37 +34,60 @@ export default function Header() {
   ];
 
   return (
-    <motion.header
-      variants={headerVariants}
-      initial="hidden"
-      animate="show"
-      className="fixed top-0 left-0 w-full z-20 bg-slate-900/70 backdrop-blur-md"
-    >
+    <header className="fixed top-0 left-0 w-full z-30 bg-slate-900/70 backdrop-blur-md">
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-        {/* Logo / Name */}
-        <Link
-          href="/"
-          className="text-2xl font-bold text-white hover:text-blue-400 transition"
-        >
+        {/* Logo */}
+        <Link href="/" className="text-2xl font-bold text-white">
           Tinarwo
         </Link>
 
-        {/* Nav Links */}
-        <nav>
-          <ul className="flex space-x-8">
+        {/* Desktop nav */}
+        <nav className="hidden md:flex space-x-8">
+          {navItems.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="text-white hover:text-blue-400 transition-colors"
+            >
+              {item.label}
+            </Link>
+          ))}
+        </nav>
+
+        {/* Mobile menu button */}
+        <button
+          className="md:hidden text-white text-2xl focus:outline-none"
+          onClick={() => setMenuOpen((open) => !open)}
+          aria-label="Toggle menu"
+        >
+          {menuOpen ? <FaTimes /> : <FaBars />}
+        </button>
+      </div>
+
+      {/* Mobile menu overlay */}
+      {menuOpen && (
+        <motion.nav
+          className="fixed top-0 right-0 h-full w-2/3 bg-slate-800 shadow-lg md:hidden"
+          initial="hidden"
+          animate="show"
+          exit="hidden"
+          variants={menuVariants}
+        >
+          <ul className="flex flex-col mt-20 space-y-6 px-6">
             {navItems.map((item) => (
               <li key={item.href}>
                 <Link
                   href={item.href}
-                  className="text-white hover:text-blue-400 transition-colors"
+                  className="text-white text-lg hover:text-blue-400 transition-colors"
+                  onClick={() => setMenuOpen(false)}
                 >
                   {item.label}
                 </Link>
               </li>
             ))}
           </ul>
-        </nav>
-      </div>
-    </motion.header>
-  );
+        </motion.nav>
+      )}
+    </header>
+);
 }
