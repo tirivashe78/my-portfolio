@@ -8,12 +8,12 @@ export default function Footer() {
   const icons = [
     {
       icon: <FaGithub size={24} />,
-      href: "https://github.com/your-username",
+      href: "https://github.com/tirivashe78",
       label: "GitHub",
     },
     {
       icon: <FaLinkedin size={24} />,
-      href: "https://linkedin.com/in/your-username",
+      href: "https://www.linkedin.com/in/tirivashe-tinarwo-482aba30a/",
       label: "LinkedIn",
     },
     {

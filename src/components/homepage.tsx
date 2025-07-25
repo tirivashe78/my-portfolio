@@ -71,14 +71,14 @@ export default function Homepage() {
 
         <motion.div variants={item} className="flex space-x-4">
           <a
-            href="/Tiriwashi_CV.pdf"
+            href="/Tiri CV.pdf"
             download
             className="px-6 py-3 bg-blue-500 rounded-full font-medium hover:bg-blue-600 transition"
           >
             Download CV
           </a>
           <a
-            href="#projects"
+            href="/projects"
             className="px-6 py-3 border border-blue-500 rounded-full font-medium hover:bg-blue-500 hover:text-white transition"
           >
             View Projects
