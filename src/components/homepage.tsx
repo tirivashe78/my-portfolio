@@ -1,18 +1,46 @@
+// src/components/homepage.tsx
 "use client";
 
 import React, { useCallback } from "react";
 import dynamic from "next/dynamic";
-import { motion } from "framer-motion";
+import { motion, Variants, Transition } from "framer-motion";
+import type { Engine } from "@tsparticles/engine";  // ✅ use v3+ engine type
 import { loadFull } from "tsparticles";
 
-// dynamically import tsParticles so it never SSRs
+// Dynamically import the v3+ React wrapper for tsParticles
 const Particles = dynamic(
-  () => import("react-tsparticles").then((mod) => mod.Particles),
+  () => import("@tsparticles/react").then((mod) => mod.Particles),
   { ssr: false }
 );
 
+// Reusable spring transition
+const spring: Transition = {
+  type: "spring",
+  stiffness: 50,
+  damping: 20,
+};
+
+// Container and item variants for Framer Motion
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: { staggerChildren: 0.3 },
+  },
+};
+
+const itemVariants: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: spring,
+  },
+};
+
 export default function Homepage() {
-  const particlesInit = useCallback(async (engine) => {
+  // Correctly typed engine parameter
+  const particlesInit = useCallback(async (engine: Engine) => {
     await loadFull(engine);
   }, []);
 
@@ -31,15 +59,6 @@ export default function Homepage() {
     },
   };
 
-  const container = {
-    hidden: { opacity: 0 },
-    show: { opacity: 1, transition: { staggerChildren: 0.3 } },
-  };
-  const item = {
-    hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 50 } },
-  };
-
   return (
     <div className="relative w-full h-screen overflow-hidden">
       <Particles
@@ -50,26 +69,26 @@ export default function Homepage() {
       />
 
       <motion.div
-        variants={container}
+        variants={containerVariants}
         initial="hidden"
         animate="show"
         className="relative z-10 flex flex-col items-center justify-center h-full px-6 text-center text-white"
       >
         <motion.h1
-          variants={item}
+          variants={itemVariants}
           className="text-5xl md:text-7xl font-extrabold mb-4"
         >
           Hi, I’m <span className="text-blue-500">Tirivashe Tinarwo</span>
         </motion.h1>
 
         <motion.p
-          variants={item}
+          variants={itemVariants}
           className="text-lg md:text-2xl max-w-xl mb-8"
         >
           I’m a <span className="font-semibold">Software Engineer</span> building modern web experiences.
         </motion.p>
 
-        <motion.div variants={item} className="flex space-x-4">
+        <motion.div variants={itemVariants} className="flex space-x-4">
           <a
             href="/Tiri CV.pdf"
             download

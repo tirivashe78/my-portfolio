@@ -3,17 +3,33 @@
 
 import React, { useState } from "react";
 import Head from "next/head";
-import { motion } from "framer-motion";
+import { motion, Variants, Transition } from "framer-motion";
 import { FaGithub, FaLinkedin, FaTwitter, FaWhatsapp } from "react-icons/fa";
 
-const fieldVariant = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 100, damping: 20 } },
+// 1. Define a properly typed spring Transition
+const spring: Transition = {
+  type: "spring",
+  stiffness: 100,
+  damping: 20,
 };
 
-const sidebarVariant = {
+// 2. Annotate your variants as Variants
+const fieldVariant: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: spring,
+  },
+};
+
+const sidebarVariant: Variants = {
   hidden: { opacity: 0, x: 50 },
-  show: { opacity: 1, x: 0, transition: { type: "spring", stiffness: 80, damping: 20 } },
+  show: {
+    opacity: 1,
+    x: 0,
+    transition: spring,
+  },
 };
 
 function Spinner() {
@@ -66,10 +82,7 @@ export default function ContactPage() {
     <>
       <Head>
         <title>Contact — Tirivashe Tinarwo</title>
-        <meta
-          name="description"
-          content="Get in touch with Tirivashe Tinarwo – phone, email, or WhatsApp."
-        />
+        <meta name="description" content="Get in touch with Tirivashe Tinarwo – phone, email, or WhatsApp." />
       </Head>
 
       <main className="bg-slate-900 text-white min-h-screen px-6 py-8">
@@ -101,9 +114,7 @@ export default function ContactPage() {
                     id={field}
                     type={field === "email" ? "email" : "text"}
                     value={form[field as keyof typeof form]}
-                    onChange={(e) =>
-                      setForm((f) => ({ ...f, [field]: e.target.value }))
-                    }
+                    onChange={(e) => setForm((f) => ({ ...f, [field]: e.target.value }))}
                     aria-invalid={!!errors[field]}
                     aria-describedby={errors[field] ? `${field}-error` : undefined}
                     className="px-4 py-2 rounded-lg bg-slate-800 border border-slate-700 focus:outline-none"
@@ -114,9 +125,7 @@ export default function ContactPage() {
                     id={field}
                     rows={5}
                     value={form.message}
-                    onChange={(e) =>
-                      setForm((f) => ({ ...f, message: e.target.value }))
-                    }
+                    onChange={(e) => setForm((f) => ({ ...f, message: e.target.value }))}
                     aria-invalid={!!errors.message}
                     aria-describedby={errors.message ? "message-error" : undefined}
                     className="px-4 py-2 rounded-lg bg-slate-800 border border-slate-700 focus:outline-none resize-none"
@@ -162,10 +171,7 @@ export default function ContactPage() {
 
             <div>
               <h2 className="text-xl font-semibold mb-2">Email</h2>
-              <a
-                href="mailto:tirivasheot@gmail.com"
-                className="text-blue-400 hover:underline"
-              >
+              <a href="mailto:tirivasheot@gmail.com" className="text-blue-400 hover:underline">
                 tirivasheot@gmail.com
               </a>
             </div>
@@ -186,21 +192,9 @@ export default function ContactPage() {
               <h2 className="text-xl font-semibold mb-2">Follow Me</h2>
               <div className="flex space-x-4">
                 {[
-                  {
-                    icon: <FaGithub size={24} />,
-                    href: "https://github.com/your-username",
-                    label: "GitHub",
-                  },
-                  {
-                    icon: <FaLinkedin size={24} />,
-                    href: "https://linkedin.com/in/your-username",
-                    label: "LinkedIn",
-                  },
-                  {
-                    icon: <FaTwitter size={24} />,
-                    href: "https://twitter.com/your-username",
-                    label: "Twitter",
-                  },
+                  { icon: <FaGithub size={24} />, href: "https://github.com/your-username", label: "GitHub" },
+                  { icon: <FaLinkedin size={24} />, href: "https://linkedin.com/in/your-username", label: "LinkedIn" },
+                  { icon: <FaTwitter size={24} />, href: "https://twitter.com/your-username", label: "Twitter" },
                 ].map((item) => (
                   <motion.a
                     key={item.href}

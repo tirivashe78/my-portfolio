@@ -4,7 +4,7 @@
 import React from "react";
 import Head from "next/head";
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, Variants, Transition } from "framer-motion";
 
 interface Project {
   title: string;
@@ -15,7 +15,8 @@ interface Project {
   repoUrl?: string;
 }
 
-export const projects: Project[] = [
+// Move this out of the page exports so it doesn't conflict with Next.js Page API
+const projects: Project[] = [
   {
     title: "PSC Project",
     description: "Internship at Afrosoft developing client solutions.",
@@ -41,9 +42,21 @@ export const projects: Project[] = [
   },
 ];
 
-const cardVariants = {
+// Define a properly typed spring transition
+const spring: Transition = {
+  type: "spring",
+  stiffness: 80,
+  damping: 20,
+};
+
+// Annotate variants as Variants
+const cardVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 80, damping: 20 } },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: spring,
+  },
 };
 
 export default function ProjectsPage() {

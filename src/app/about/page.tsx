@@ -4,8 +4,37 @@
 import React from "react";
 import Head from "next/head";
 import { motion } from "framer-motion";
+// at the top of src/app/about/page.tsx
+import type { Variants, Transition } from "framer-motion";
 
-export const personalInfo = [
+// define a reusable spring transition
+const spring: Transition = {
+  type: "spring",
+  stiffness: 100,
+  damping: 20,
+};
+
+// now annotate as Variants
+const fadeIn: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: spring,        // uses our correctly typed Transition
+  },
+};
+
+const stagger: Variants = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.2,    // valid Variants transition field
+    },
+  },
+};
+
+
+const personalInfo = [
   { label: "Nationality", value: "Zimbabwean" },
   { label: "Birthday", value: "21 September 2001" },
   { label: "Marital Status", value: "Single" },
@@ -13,7 +42,7 @@ export const personalInfo = [
   { label: "Languages", value: "Shona, English" },
 ];
 
-export const techCategories = [
+const techCategories = [
   {
     title: "Programming Languages",
     items: ["Java", "SQL"],
@@ -40,7 +69,7 @@ export const techCategories = [
   },
 ];
 
-export const timelineItems = [
+const timelineItems = [
   {
     date: "2020",
     title: "St Faith’s High School",
@@ -63,12 +92,12 @@ export const timelineItems = [
   },
 ];
 
-const fadeIn = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 100, damping: 20 } },
-};
+// const fadeIn = {
+//   hidden: { opacity: 0, y: 20 },
+//   show: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 100, damping: 20 } },
+// };
 
-const stagger = { hidden: {}, show: { transition: { staggerChildren: 0.2 } } };
+// const stagger = { hidden: {}, show: { transition: { staggerChildren: 0.2 } } };
 
 export default function AboutPage() {
   return (
@@ -110,7 +139,8 @@ export default function AboutPage() {
               Hi, I’m Tirivashe Tinarwo
             </motion.h1>
             <motion.p variants={fadeIn} className="text-lg leading-relaxed">
-              I’m a Software Engineer specializing in modern web applications with a passion for clean code, robust architecture, and delightful user experiences.
+              I’m a Software Engineer specializing in modern web applications with a passion for clean
+              code, robust architecture, and delightful user experiences.
             </motion.p>
             <motion.div variants={fadeIn} className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {personalInfo.map((info) => (
@@ -196,6 +226,7 @@ export default function AboutPage() {
     </>
   );
 }
+
 
 // // src/app/about/page.tsx
 // "use client";

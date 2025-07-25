@@ -1,8 +1,26 @@
+// src/components/header.tsx
 "use client";
 
 import React from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, Variants, Transition } from "framer-motion";
+
+// Define a properly typed spring Transition
+const spring: Transition = {
+  type: "spring",
+  stiffness: 120,
+  damping: 20,
+};
+
+// Annotate your header animation variants as Variants
+const headerVariants: Variants = {
+  hidden: { y: -50, opacity: 0 },
+  show: {
+    y: 0,
+    opacity: 1,
+    transition: spring,
+  },
+};
 
 export default function Header() {
   const navItems = [
@@ -12,18 +30,9 @@ export default function Header() {
     { label: "Contact", href: "/contact" },
   ];
 
-  const container = {
-    hidden: { y: -50, opacity: 0 },
-    show: {
-      y: 0,
-      opacity: 1,
-      transition: { type: "spring", stiffness: 120, damping: 20 },
-    },
-  };
-
   return (
     <motion.header
-      variants={container}
+      variants={headerVariants}
       initial="hidden"
       animate="show"
       className="fixed top-0 left-0 w-full z-20 bg-slate-900/70 backdrop-blur-md"
