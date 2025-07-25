@@ -4,58 +4,53 @@
 import React, { useCallback } from "react";
 import dynamic from "next/dynamic";
 import { motion, Variants, Transition } from "framer-motion";
-import type { Engine } from "@tsparticles/engine";  // ✅ use v3+ engine type
+import type { IOptions, RecursivePartial } from "tsparticles-engine";
 import { loadFull } from "tsparticles";
 
-// Dynamically import the v3+ React wrapper for tsParticles
-const Particles = dynamic(
-  () => import("@tsparticles/react").then((mod) => mod.Particles),
-  { ssr: false }
-);
+// Dynamically load the canvas so there’s no SSR/client mismatch
+const Particles = dynamic(() => import("react-tsparticles"), { ssr: false });
 
-// Reusable spring transition
-const spring: Transition = {
-  type: "spring",
-  stiffness: 50,
-  damping: 20,
-};
+// Spring transition for your text
+const spring: Transition = { type: "spring", stiffness: 50, damping: 20 };
 
-// Container and item variants for Framer Motion
 const containerVariants: Variants = {
   hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: { staggerChildren: 0.3 },
-  },
+  show:   { opacity: 1, transition: { staggerChildren: 0.3 } },
 };
 
 const itemVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: spring,
-  },
+  show:   { opacity: 1, y: 0, transition: spring },
 };
 
 export default function Homepage() {
-  // Correctly typed engine parameter
-  const particlesInit = useCallback(async (engine: Engine) => {
+  // ← engine typed as any to bypass the two‐package mismatch
+  const particlesInit = useCallback(async (engine: any) => {
+    // cast to any so loadFull doesn’t complain
     await loadFull(engine);
   }, []);
 
-  const particlesOptions = {
+  const particlesOptions: RecursivePartial<IOptions> = {
     background: { color: { value: "#0f172a" } },
     fpsLimit: 60,
     interactivity: {
-      events: { onHover: { enable: true, mode: "repulse" }, resize: true },
+      events: {
+        onHover: { enable: true, mode: "repulse" },
+        // include delay to satisfy IResizeEvent
+        resize:   { enable: true, delay: 0 },
+      },
     },
     particles: {
       color: { value: "#3b82f6" },
-      links: { enable: true, color: "#3b82f6", distance: 150, opacity: 0.3 },
-      move: { enable: true, speed: 1.5 },
+      links: {
+        enable:  true,
+        color:   "#3b82f6",
+        distance: 150,
+        opacity: 0.3,
+      },
+      move:   { enable: true, speed: 1.5 },
       number: { value: 50, density: { enable: true, area: 800 } },
-      size: { value: { min: 1, max: 3 } },
+      size:   { value: { min: 1, max: 3 } },
     },
   };
 
@@ -74,23 +69,17 @@ export default function Homepage() {
         animate="show"
         className="relative z-10 flex flex-col items-center justify-center h-full px-6 text-center text-white"
       >
-        <motion.h1
-          variants={itemVariants}
-          className="text-5xl md:text-7xl font-extrabold mb-4"
-        >
+        <motion.h1 variants={itemVariants} className="text-5xl md:text-7xl font-extrabold mb-4">
           Hi, I’m <span className="text-blue-500">Tirivashe Tinarwo</span>
         </motion.h1>
 
-        <motion.p
-          variants={itemVariants}
-          className="text-lg md:text-2xl max-w-xl mb-8"
-        >
+        <motion.p variants={itemVariants} className="text-lg md:text-2xl max-w-xl mb-8">
           I’m a <span className="font-semibold">Software Engineer</span> building modern web experiences.
         </motion.p>
 
         <motion.div variants={itemVariants} className="flex space-x-4">
           <a
-            href="/Tiri CV.pdf"
+            href="/Tiriwashi_CV.pdf"
             download
             className="px-6 py-3 bg-blue-500 rounded-full font-medium hover:bg-blue-600 transition"
           >
