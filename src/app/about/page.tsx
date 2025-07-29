@@ -45,11 +45,11 @@ const personalInfo = [
 const techCategories = [
   {
     title: "Programming Languages",
-    items: ["Java", "SQL"],
+    items: ["Java", "SQL", "Python"],
   },
   {
     title: "Frameworks & Libraries",
-    items: ["Spring Boot", "JDBC", "Angular"],
+    items: ["Spring Boot", "JDBC", "Angular","Next.js"],
   },
   {
     title: "Database Management",

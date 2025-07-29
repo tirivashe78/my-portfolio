@@ -27,7 +27,7 @@ const projects: Project[] = [
   {
     title: "Biometric Fingerprint Based Voting System with AI Anomaly Detection and Fraud Prevention",
     description: "Final‑year project: secure voting with ML‑driven fraud alerts.",
-    tech: ["Next.js", "Python", "Scikit‑Learn", "Isolation Forest"],
+    tech: ["Next.js", "Python", "Scikit‑Learn", "Isolation Forest","Springboot"],
     imageUrl: "/projects/logo2.png",
     liveUrl: "https://your-voting-demo.vercel.app",
     repoUrl: "https://github.com/tirivashe78/my-biometric-voting-system",
@@ -35,11 +35,20 @@ const projects: Project[] = [
   {
     title: "WorkTrack",
     description: "Internship project: task management app for employees.",
-    tech: ["Node.js", "Express", "MongoDB", "React"],
+    tech: ["Springboot", "Java", "MySQL", "angularjs"],
     imageUrl: "/projects/worktrack.jpg",
     liveUrl: "https://your-worktrack-demo.vercel.app",
-    repoUrl: "https://github.com/your-username/worktrack",
+    repoUrl: "https://github.com/tirivashe78/work-track-backend",
   },
+  {
+  title: "Fitness Application",
+  description:
+    "A full-stack fitness tracking application that allows users to manage workouts, track progress, and monitor health metrics. Built with React, Next.js, Spring Boot, and MySQL for a seamless and responsive experience.",
+  tech: ["Spring Boot", "Java", "MySQL", "React", "Next.js"],
+  imageUrl: "/projects/fitness.png",
+  liveUrl: "https://your-fitness-app.vercel.app", // Replace with actual live URL when deployed
+  repoUrl: "https://github.com/tirivashe78/fitness-tracker",
+},
 ];
 
 // Define a properly typed spring transition
