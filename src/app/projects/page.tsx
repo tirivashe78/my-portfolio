@@ -30,7 +30,7 @@ const projects: Project[] = [
     tech: ["Next.js", "Python", "Scikit‑Learn", "Isolation Forest"],
     imageUrl: "/projects/logo2.png",
     liveUrl: "https://your-voting-demo.vercel.app",
-    repoUrl: "https://github.com/your-username/voting-system",
+    repoUrl: "https://github.com/tirivashe78/my-biometric-voting-system",
   },
   {
     title: "WorkTrack",
