@@ -45,7 +45,7 @@ const projects: Project[] = [
   description:
     "A full-stack fitness tracking application that allows users to manage workouts, track progress, and monitor health metrics. Built with React, Next.js, Spring Boot, and MySQL for a seamless and responsive experience.",
   tech: ["Spring Boot", "Java", "MySQL", "React", "Next.js"],
-  imageUrl: "/projects/fitness.png",
+  imageUrl: "/projects/Fitness.png",
   liveUrl: "https://your-fitness-app.vercel.app", // Replace with actual live URL when deployed
   repoUrl: "https://github.com/tirivashe78/fitness-tracker",
 },
