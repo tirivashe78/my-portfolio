@@ -165,8 +165,8 @@ export default function ContactPage() {
           >
             <div>
               <h2 className="text-xl font-semibold mb-2">Phone</h2>
-              <p className="text-blue-400">0784 558 583</p>
-              <p className="text-blue-400">0713 151 841</p>
+              <p className="text-blue-400">+263 784 558 583</p>
+              <p className="text-blue-400">+263 713 151 841</p>
             </div>
 
             <div>
