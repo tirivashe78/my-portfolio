@@ -1,10 +1,9 @@
-// src/components/header.tsx
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence, Variants, Transition } from "framer-motion";
-import { FaBars, FaTimes } from "react-icons/fa";
+import { FaBars, FaTimes, FaHome, FaUser, FaFolderOpen, FaEnvelope, FaAward } from "react-icons/fa";
 
 const spring: Transition = { type: "spring", stiffness: 200, damping: 20 };
 
@@ -25,13 +24,14 @@ export default function Header() {
   const panelRef = useRef<HTMLElement | null>(null);
 
   const navItems = [
-    { label: "Home", href: "/" },
-    { label: "About", href: "/about" },
-    { label: "Projects", href: "/projects" },
-    { label: "Contact", href: "/contact" },
+    { label: "Home", href: "/", Icon: FaHome },
+    { label: "About", href: "/about", Icon: FaUser },
+    { label: "Projects", href: "/projects", Icon: FaFolderOpen },
+    // { label: "Certifications", href: "/certifications", Icon: FaAward },
+    { label: "Contact", href: "/contact", Icon: FaEnvelope },
   ];
 
-  // close on Escape
+  // Close on Escape key
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
       if (e.key === "Escape" && menuOpen) setMenuOpen(false);
@@ -40,7 +40,7 @@ export default function Header() {
     return () => window.removeEventListener("keydown", onKey);
   }, [menuOpen]);
 
-  // lock body scroll when menu open
+  // Lock body scroll when menu open
   useEffect(() => {
     const original = typeof document !== "undefined" ? document.body.style.overflow : "";
     if (menuOpen) document.body.style.overflow = "hidden";
@@ -49,7 +49,7 @@ export default function Header() {
     };
   }, [menuOpen]);
 
-  // focus first interactive element in the panel when opened
+  // Focus first interactive element in the panel when opened
   useEffect(() => {
     if (menuOpen && panelRef.current) {
       const first = panelRef.current.querySelector<HTMLElement>("a,button,input,textarea");
@@ -58,20 +58,28 @@ export default function Header() {
   }, [menuOpen]);
 
   return (
-    <header className="fixed top-0 left-0 w-full z-30 bg-slate-900/70 backdrop-blur-md">
+    <header className="fixed top-0 left-0 w-full z-30 bg-slate-900/70 backdrop-blur-md border-b border-white/10">
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-        <Link href="/" className="text-2xl font-bold text-white">
-          Tirivashe Tinarwo
+        {/* Logo / Brand */}
+        <Link href="/" className="text-2xl font-bold text-white flex items-center gap-2">
+          <span>Tirivashe Tinarwo</span>
         </Link>
 
-        <nav className="hidden md:flex space-x-8">
-          {navItems.map((item) => (
-            <Link key={item.href} href={item.href} className="text-white hover:text-blue-400 transition-colors">
-              {item.label}
+        {/* Desktop Menu */}
+        <nav className="hidden md:flex space-x-8 items-center">
+          {navItems.map(({ label, href, Icon }) => (
+            <Link
+              key={href}
+              href={href}
+              className="flex items-center gap-1 text-white hover:text-blue-400 transition-colors"
+            >
+              <Icon className="text-white" />
+              <span>{label}</span>
             </Link>
           ))}
         </nav>
 
+        {/* Mobile Menu Toggle */}
         <button
           className="md:hidden text-white text-2xl focus:outline-none"
           onClick={() => setMenuOpen((s) => !s)}
@@ -82,11 +90,11 @@ export default function Header() {
         </button>
       </div>
 
-      {/* Mobile menu + dim backdrop */}
+      {/* Mobile slide-out menu */}
       <AnimatePresence>
         {menuOpen && (
           <>
-            {/* Backdrop that covers entire page (dim everything) */}
+            {/* Backdrop */}
             <motion.div
               className="fixed inset-0 z-50 bg-black"
               onClick={() => setMenuOpen(false)}
@@ -96,7 +104,7 @@ export default function Header() {
               variants={backdropVariants}
             />
 
-            {/* Sliding translucent (frosted) panel */}
+            {/* Slide panel */}
             <motion.aside
               ref={panelRef}
               role="dialog"
@@ -108,7 +116,6 @@ export default function Header() {
               variants={panelVariants}
             >
               <div className="h-full px-6 pt-6 pb-12 flex flex-col">
-                {/* header row inside panel */}
                 <div className="flex items-center justify-between">
                   <Link href="/" className="text-2xl font-bold text-white" onClick={() => setMenuOpen(false)}>
                     Tirivashe Tinarwo
@@ -122,32 +129,20 @@ export default function Header() {
                   </button>
                 </div>
 
-                {/* nav items */}
                 <ul className="mt-10 flex flex-col gap-6 text-lg">
-                  {navItems.map((item) => (
-                    <li key={item.href}>
+                  {navItems.map(({ label, href, Icon }) => (
+                    <li key={href}>
                       <Link
-                        href={item.href}
-                        className="block text-white hover:text-blue-400 transition-colors"
+                        href={href}
+                        className="flex items-center gap-2 text-white hover:text-blue-400 transition-colors"
                         onClick={() => setMenuOpen(false)}
                       >
-                        {item.label}
+                        <Icon />
+                        <span>{label}</span>
                       </Link>
                     </li>
                   ))}
                 </ul>
-
-                {/* CTA at bottom */}
-                {/* <div className="mt-auto">
-                  <a
-                    href="/Tiri CV.pdf"
-                    download
-                    className="inline-block px-5 py-3 bg-blue-500 hover:bg-blue-600 text-white rounded-full text-sm font-medium transition shadow"
-                    onClick={() => setMenuOpen(false)}
-                  >
-                    Download CV
-                  </a>
-                </div> */}
               </div>
             </motion.aside>
           </>

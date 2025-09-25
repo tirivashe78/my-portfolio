@@ -30,7 +30,7 @@ const projects: Project[] = [
       "My final-year project focused on building a secure voting platform that integrates biometric fingerprint authentication with AI-driven anomaly detection to prevent electoral fraud. The system leverages machine learning techniques such as Isolation Forest to detect suspicious voting behavior. This project earned me a 2.1 grade and strengthened my expertise in combining software engineering with applied AI for real-world security challenges.",
     tech: ["Next.js", "Python", "Scikit-Learn", "Isolation Forest", "Spring Boot"],
     imageUrl: "/projects/logo2.png",
-    liveUrl: "https://your-voting-demo.vercel.app",
+    // liveUrl: "https://your-voting-demo.vercel.app",
     repoUrl: "https://github.com/tirivashe78/my-biometric-voting-system",
   },
   {
@@ -39,7 +39,7 @@ const projects: Project[] = [
       "An internship-year project developed as a task management application for employees. The system was designed to help organizations track employee tasks and monitor work progress in real time. I contributed to building the backend with Java, Spring Boot, and MySQL, while the frontend was powered by AngularJS. This project enhanced my skills in enterprise application development and workplace productivity tools.",
     tech: ["Spring Boot", "Java", "MySQL", "AngularJS"],
     imageUrl: "/projects/worktrack.jpg",
-    liveUrl: "https://your-worktrack-demo.vercel.app",
+    // liveUrl: "https://your-worktrack-demo.vercel.app",
     repoUrl: "https://github.com/tirivashe78/work-track-backend",
   },
   {
@@ -48,7 +48,7 @@ const projects: Project[] = [
       "A full-stack fitness tracking application that allows users to manage workouts, track progress, and monitor health metrics. Built with React, Next.js, Spring Boot, and MySQL for a seamless and responsive experience.",
     tech: ["Spring Boot", "Java", "MySQL", "React", "Next.js"],
     imageUrl: "/projects/Fitness.png",
-    liveUrl: "https://your-fitness-app.vercel.app",
+    // liveUrl: "https://your-fitness-app.vercel.app",
     repoUrl: "https://github.com/tirivashe78/fitness-tracker",
   },
   {
