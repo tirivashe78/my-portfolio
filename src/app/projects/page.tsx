@@ -59,7 +59,7 @@ const projects: Project[] = [
       "My final-year project focused on building a secure voting platform that integrates biometric fingerprint authentication with AI-driven anomaly detection to prevent electoral fraud. The system leverages machine learning techniques such as Isolation Forest to detect suspicious voting behavior. This project earned me a 2.1 grade and strengthened my expertise in combining software engineering with applied AI for real-world security challenges.",
     tech: ["Next.js", "Python", "Scikit-Learn", "Isolation Forest", "Spring Boot"],
     imageUrl: "/projects/logo2.png",
-    liveUrl: "https://my-biometric-voting-system-q7a9mkp85-onwards-projects-deab1ee3.vercel.app/admin",
+    liveUrl: "my-biometric-voting-system.vercel.app/admin",
     repoUrl: "https://github.com/tirivashe78/my-biometric-voting-system",
   },
   {
