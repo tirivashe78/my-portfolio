@@ -46,7 +46,7 @@ const projects: Project[] = [
 },
 
   {
-    title: "PSC Project",
+    title: "PSC Project Backend",
     description:
       "A team-based project developed during my internship at Afrosoft Holdings. I contributed primarily to the backend, working with Java, Spring Boot, Oracle Database, and Jasper Reports. This experience strengthened my skills in enterprise-level development and collaborative software engineering.",
     tech: ["Java", "Spring Boot", "Oracle DB", "Jasper Reports"],
@@ -59,7 +59,7 @@ const projects: Project[] = [
       "My final-year project focused on building a secure voting platform that integrates biometric fingerprint authentication with AI-driven anomaly detection to prevent electoral fraud. The system leverages machine learning techniques such as Isolation Forest to detect suspicious voting behavior. This project earned me a 2.1 grade and strengthened my expertise in combining software engineering with applied AI for real-world security challenges.",
     tech: ["Next.js", "Python", "Scikit-Learn", "Isolation Forest", "Spring Boot"],
     imageUrl: "/projects/logo2.png",
-    // liveUrl: "https://your-voting-demo.vercel.app",
+    liveUrl: "https://my-biometric-voting-system.vercel.app/auth",
     repoUrl: "https://github.com/tirivashe78/my-biometric-voting-system",
   },
   {
