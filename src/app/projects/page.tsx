@@ -16,6 +16,35 @@ interface Project {
 }
 
 const projects: Project[] = [
+    {
+    title: "Double Red Rose",
+    description:
+      "A personal project I embarked on as a member of Affluence Global, a company that sells the Double Red Rose product. The project was both a learning journey and a way to boost my sales while referring as many people to the product as possible. Built with React and Next.js for a modern, responsive experience.",
+    tech: ["React", "Next.js"],
+    imageUrl: "/AG.png",
+    liveUrl: "https://doubleredrose.netlify.app",
+    repoUrl: "https://github.com/tirivashe78/double-red-rose",
+  },
+  {
+  title: "Leave Management System",
+  description:
+    "A full-stack application built to manage employee leave requests efficiently. Features include role-based access for admins and employees, automated leave approval workflow, and notifications. Built with Spring Boot, MySQL, and React for a seamless experience.",
+  tech: ["Spring Boot", "MySQL", "React", "Spring Security"],
+  imageUrl: "/leave-management-software.webp",
+  // liveUrl: "https://your-live-leave-app-url.com", // replace with actual live URL if available
+  repoUrl: "https://github.com/tirivashe78/leave-manager",
+},
+
+{
+  title: "Portfolio Website",
+  description:
+    "My personal portfolio showcasing my projects, skills, and experience. Built with React and Next.js to provide a modern, responsive, and visually appealing interface for potential clients and employers.",
+  tech: ["React", "Next.js", "Tailwind CSS"],
+  imageUrl: "/Screenshot 2025-10-08 132731.png",
+  liveUrl: "https://tirivashet.vercel.app",
+  repoUrl: "https://github.com/tirivashe78/my-portfolio",
+},
+
   {
     title: "PSC Project",
     description:
@@ -51,15 +80,7 @@ const projects: Project[] = [
     // liveUrl: "https://your-fitness-app.vercel.app",
     repoUrl: "https://github.com/tirivashe78/fitness-tracker",
   },
-  {
-    title: "Double Red Rose",
-    description:
-      "A personal project I embarked on as a member of Affluence Global, a company that sells the Double Red Rose product. The project was both a learning journey and a way to boost my sales while referring as many people to the product as possible. Built with React and Next.js for a modern, responsive experience.",
-    tech: ["React", "Next.js"],
-    imageUrl: "/AG.png",
-    liveUrl: "https://doubleredrose.netlify.app",
-    repoUrl: "https://github.com/tirivashe78/double-red-rose",
-  },
+
 ];
 
 // --- Transitions & Variants ---
