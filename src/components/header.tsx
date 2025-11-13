@@ -91,63 +91,79 @@ export default function Header() {
       </div>
 
       {/* Mobile slide-out menu */}
-      <AnimatePresence>
-        {menuOpen && (
-          <>
-            {/* Backdrop */}
-            <motion.div
-              className="fixed inset-0 z-50 bg-black"
+{/* Mobile slide-out menu */}
+{/* Mobile slide-out menu */}
+<AnimatePresence>
+  {menuOpen && (
+    <>
+      {/* Backdrop */}
+      <motion.div
+        className="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm"
+        onClick={() => setMenuOpen(false)}
+        initial="hidden"
+        animate="show"
+        exit="exit"
+        variants={backdropVariants}
+      />
+
+      {/* Full-screen slide panel */}
+      <motion.aside
+        ref={panelRef}
+        role="dialog"
+        aria-modal="true"
+        className="fixed inset-0 z-60 w-full h-full border-blue-900/30 bg-[#0a1128] 
+                   text-white shadow-2xl flex flex-col rounded-none"
+        initial="hidden"
+        animate="show"
+        exit="exit"
+        variants={panelVariants}
+      >
+        <div className="h-full px-6 pt-6 pb-12 flex flex-col">
+          {/* Header */}
+          <div className="flex items-center justify-between">
+            <Link
+              href="/"
+              className="text-2xl font-bold text-white"
               onClick={() => setMenuOpen(false)}
-              initial="hidden"
-              animate="show"
-              exit="exit"
-              variants={backdropVariants}
-            />
-
-            {/* Slide panel */}
-            <motion.aside
-              ref={panelRef}
-              role="dialog"
-              aria-modal="true"
-              className="fixed inset-y-0 right-0 z-60 w-2/3 max-w-xs bg-slate-800/60 backdrop-blur-lg border border-white/10 text-white shadow-2xl"
-              initial="hidden"
-              animate="show"
-              exit="exit"
-              variants={panelVariants}
             >
-              <div className="h-full px-6 pt-6 pb-12 flex flex-col">
-                <div className="flex items-center justify-between">
-                  <Link href="/" className="text-2xl font-bold text-white" onClick={() => setMenuOpen(false)}>
-                    Tirivashe Tinarwo
-                  </Link>
-                  <button
-                    aria-label="Close menu"
-                    className="text-white text-2xl focus:outline-none"
-                    onClick={() => setMenuOpen(false)}
-                  >
-                    <FaTimes />
-                  </button>
-                </div>
+              Tirivashe Tinarwo
+            </Link>
+            <button
+              aria-label="Close menu"
+              className="text-white text-2xl focus:outline-none"
+              onClick={() => setMenuOpen(false)}
+            >
+              <FaTimes />
+            </button>
+          </div>
 
-                <ul className="mt-10 flex flex-col gap-6 text-lg">
-                  {navItems.map(({ label, href, Icon }) => (
-                    <li key={href}>
-                      <Link
-                        href={href}
-                        className="flex items-center gap-2 text-white hover:text-blue-400 transition-colors"
-                        onClick={() => setMenuOpen(false)}
-                      >
-                        <Icon />
-                        <span>{label}</span>
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </motion.aside>
-          </>
-        )}
-      </AnimatePresence>
+          {/* Navigation Links */}
+          <ul className="mt-10 flex flex-col gap-6 text-lg bg-[#0a1128]">
+            {navItems.map(({ label, href, Icon }) => (
+              <li key={href}>
+                <Link
+                  href={href}
+                  className="flex items-center gap-3 text-white/90 hover:text-yellow-300 transition-colors"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  <Icon />
+                  <span>{label}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+
+          {/* Optional Footer (e.g., social icons or button) */}
+          <div className="mt-auto text-center text-white/70 text-sm">
+            © {new Date().getFullYear()} Tirivashe Tinarwo
+          </div>
+        </div>
+      </motion.aside>
+    </>
+  )}
+</AnimatePresence>
+
+
     </header>
   );
 }

@@ -16,7 +16,16 @@ interface Project {
 }
 
 const projects: Project[] = [
-    {
+  {
+  title: "AFM Shalom Center",
+  description:
+    "A church website built for AFM Shalom Center in Westlea using Next.js, TailwindCSS, Prisma, NextAuth, and PostgreSQL. This project was created to provide a modern, responsive, and user-friendly platform for church members, featuring authentication, a gallery, leadership profiles, notices, and more. Built as a learning project with a focus on real-world full-stack development.",
+  tech: ["Next.js", "TailwindCSS", "Prisma", "NextAuth", "PostgreSQL"],
+  imageUrl: "/afm.png",
+  liveUrl: "https://afm-shalom-website.vercel.app/",
+  repoUrl: "https://github.com/tirivashe78/afm-shalom-website",
+},
+  {
     title: "Double Red Rose",
     description:
       "A personal project I embarked on as a member of Affluence Global, a company that sells the Double Red Rose product. The project was both a learning journey and a way to boost my sales while referring as many people to the product as possible. Built with React and Next.js for a modern, responsive experience.",
@@ -26,24 +35,24 @@ const projects: Project[] = [
     repoUrl: "https://github.com/tirivashe78/double-red-rose",
   },
   {
-  title: "Leave Management System",
-  description:
-    "A full-stack application built to manage employee leave requests efficiently. Features include role-based access for admins and employees, automated leave approval workflow, and notifications. Built with Spring Boot, MySQL, and React for a seamless experience.",
-  tech: ["Spring Boot", "MySQL", "React", "Spring Security"],
-  imageUrl: "/leave-management-software.webp",
-  // liveUrl: "https://your-live-leave-app-url.com", // replace with actual live URL if available
-  repoUrl: "https://github.com/tirivashe78/leave-manager",
-},
+    title: "Leave Management System",
+    description:
+      "A full-stack application built to manage employee leave requests efficiently. Features include role-based access for admins and employees, automated leave approval workflow, and notifications. Built with Spring Boot, MySQL, and React for a seamless experience.",
+    tech: ["Spring Boot", "MySQL", "React", "Spring Security"],
+    imageUrl: "/leave-management-software.webp",
+    // liveUrl: "https://your-live-leave-app-url.com", // replace with actual live URL if available
+    repoUrl: "https://github.com/tirivashe78/leave-manager",
+  },
 
-{
-  title: "Portfolio Website",
-  description:
-    "My personal portfolio showcasing my projects, skills, and experience. Built with React and Next.js to provide a modern, responsive, and visually appealing interface for potential clients and employers.",
-  tech: ["React", "Next.js", "Tailwind CSS"],
-  imageUrl: "/Screenshot 2025-10-08 132731.png",
-  liveUrl: "https://tirivashet.vercel.app",
-  repoUrl: "https://github.com/tirivashe78/my-portfolio",
-},
+  {
+    title: "Portfolio Website",
+    description:
+      "My personal portfolio showcasing my projects, skills, and experience. Built with React and Next.js to provide a modern, responsive, and visually appealing interface for potential clients and employers.",
+    tech: ["React", "Next.js", "Tailwind CSS"],
+    imageUrl: "/Screenshot 2025-10-08 132731.png",
+    liveUrl: "https://tirivashet.vercel.app",
+    repoUrl: "https://github.com/tirivashe78/my-portfolio",
+  },
 
   {
     title: "PSC Project Backend",
@@ -54,10 +63,17 @@ const projects: Project[] = [
     repoUrl: "https://github.com/your-username/psc-project",
   },
   {
-    title: "Biometric Fingerprint Based Voting System with AI Anomaly Detection and Fraud Prevention",
+    title:
+      "Biometric Fingerprint Based Voting System with AI Anomaly Detection and Fraud Prevention",
     description:
       "My final-year project focused on building a secure voting platform that integrates biometric fingerprint authentication with AI-driven anomaly detection to prevent electoral fraud. The system leverages machine learning techniques such as Isolation Forest to detect suspicious voting behavior. This project earned me a 2.1 grade and strengthened my expertise in combining software engineering with applied AI for real-world security challenges.",
-    tech: ["Next.js", "Python", "Scikit-Learn", "Isolation Forest", "Spring Boot"],
+    tech: [
+      "Next.js",
+      "Python",
+      "Scikit-Learn",
+      "Isolation Forest",
+      "Spring Boot",
+    ],
     imageUrl: "/projects/Screenshot 2025-06-29 001548.png",
     // liveUrl: "https://my-biometric-voting-system.vercel.app/admin",
     repoUrl: "https://github.com/tirivashe78/my-biometric-voting-system",
@@ -80,11 +96,14 @@ const projects: Project[] = [
     // liveUrl: "https://your-fitness-app.vercel.app",
     repoUrl: "https://github.com/tirivashe78/fitness-tracker",
   },
-
 ];
 
 // --- Transitions & Variants ---
-const spring: Transition = { type: "spring" as const, stiffness: 80, damping: 20 };
+const spring: Transition = {
+  type: "spring" as const,
+  stiffness: 80,
+  damping: 20,
+};
 const cardVariants: Variants = {
   hidden: { opacity: 0, y: 30, scale: 0.95 },
   show: { opacity: 1, y: 0, scale: 1, transition: spring },
@@ -102,14 +121,14 @@ export default function ProjectsPage() {
       </Head>
 
       <main className="bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 text-white min-h-screen px-6 py-12">
- <motion.h1
-  className="text-4xl md:text-5xl font-bold text-center mb-12 text-white"
-  initial={{ opacity: 0, y: -30 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.8, ease: "easeOut" }}
->
-  My Projects
-</motion.h1>
+        <motion.h1
+          className="text-4xl md:text-5xl font-bold text-center mb-12 text-white"
+          initial={{ opacity: 0, y: -30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
+          My Projects
+        </motion.h1>
 
         <div className="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((proj, idx) => (
@@ -123,13 +142,20 @@ export default function ProjectsPage() {
               whileHover={{ y: -8, scale: 1.03 }}
             >
               <div className="relative h-52 w-full">
-                <Image src={proj.imageUrl} alt={proj.title} fill className="object-cover" />
+                <Image
+                  src={proj.imageUrl}
+                  alt={proj.title}
+                  fill
+                  className="object-cover"
+                />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
               </div>
 
               <div className="p-6 bg-gradient-to-b from-slate-700 via-slate-800 to-slate-700">
                 <h2 className="text-2xl font-semibold mb-3">{proj.title}</h2>
-                <p className="text-sm leading-relaxed mb-4">{proj.description}</p>
+                <p className="text-sm leading-relaxed mb-4">
+                  {proj.description}
+                </p>
 
                 <div className="flex flex-wrap gap-2 mb-4">
                   {proj.tech.map((tech) => (
