@@ -44,7 +44,16 @@ const projects: Project[] = [
     liveUrl: "https://tirivashet.vercel.app",
     repoUrl: "https://github.com/tirivashe78/my-portfolio",
   },
-  
+  {
+  title: "Asset Manager",
+  description:
+    "A web application for managing organizational assets. Admins can create users, categories, and departments, while users can add and view their own assets. Features role-based dashboards and a modern, responsive UI. STILL IN PROGRESS!!!",
+  tech: ["Next.js", "Tailwind CSS", "Supabase", "Framer Motion"],
+  imageUrl: "/assetmanager.png",
+  liveUrl: "https://asset-manager-beryl.vercel.app/",
+  repoUrl: "https://github.com/tirivashe78/asset-manager",
+}
+,
   {
     title: "Leave Management System",
     description:
