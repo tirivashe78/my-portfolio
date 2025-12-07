@@ -45,16 +45,16 @@ const personalInfo = [
 
 // --- Tech Skills ---
 const techCategories = [
-  { title: "Programming Languages", items: ["Java", "Python", "SQL"] },
+  { title: "Programming Languages", items: ["Java", "Python", "SQL","C#"] },
   {
     title: "Frameworks & Libraries",
     items: ["Spring Boot", "Next.js", "React", "Angular (Basic)"],
   },
-  { title: "Database Management", items: ["MySQL", "Oracle"] },
+  { title: "Database Management", items: ["MySQL", "Oracle", "PostgreSQL"] },
   { title: "API Development", items: ["RESTful APIs", "Postman"] },
   {
     title: "Cloud & Tools",
-    items: ["Oracle Cloud", "Maven", "Git", "Docker (Basic)"],
+    items: ["Oracle Cloud", "Maven", "Git", "Docker", "AWS (Basic)","GitHub Actions"],
   },
   {
     title: "Frontend Craft",
