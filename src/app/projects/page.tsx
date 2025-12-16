@@ -41,7 +41,7 @@ const projects: Project[] = [
       "My personal portfolio showcasing my projects, skills, and experience. Built with React and Next.js to provide a modern, responsive, and visually appealing interface for potential clients and employers.",
     tech: ["React", "Next.js", "Tailwind CSS"],
     imageUrl: "/Screenshot 2025-10-08 132731.png",
-    liveUrl: "https://tirivashet.vercel.app",
+    liveUrl: "https://www.tirivashetinarwo.online/",
     repoUrl: "https://github.com/tirivashe78/my-portfolio",
   },
   {
